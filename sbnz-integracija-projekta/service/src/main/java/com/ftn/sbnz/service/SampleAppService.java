@@ -21,11 +21,11 @@ public class SampleAppService {
 		this.kieContainer = kieContainer;
 	}
 
-	public Item getClassifiedItem(Item i) {
-		KieSession kieSession = kieContainer.newKieSession();
-		kieSession.insert(i);
-		kieSession.fireAllRules();
-		kieSession.dispose();
-		return i;
-	}
+//	public Item getClassifiedItem(Item i) {
+//		KieSession kieSession = kieContainer.newKieSession();
+//		kieSession.insert(i);
+//		kieSession.fireAllRules();
+//		kieSession.dispose();
+//		return i;
+//	}
 }

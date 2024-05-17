@@ -1,0 +1,193 @@
+[
+  {
+    "type": "House",
+    "location": "Suburb A",
+    "price": 300000,
+    "yearBuilt": 2000,
+    "numOfBathrooms": 3,
+    "distanceFromCityCenter": 15,
+    "floors": 2,
+    "sizeOfGarden": 500,
+    "hasGarage": true
+  },
+  {
+    "type": "Cottage",
+    "location": "Rural Area B",
+    "price": 150000,
+    "yearBuilt": 1985,
+    "numOfBathrooms": 2,
+    "sizeOfGarden": 1000,
+    "numOfParkingSpaces": 2,
+    "locationType": "Country"
+  },
+  {
+    "type": "Apartment",
+    "location": "City Center",
+    "price": 500000,
+    "yearBuilt": 2015,
+    "numOfBathrooms": 2,
+    "floorLevel": 5,
+    "numOfParkingSpaces": 1,
+    "distanceFromCityCenter": 0,
+    "numOfTerraces": 1
+  },
+  {
+    "type": "House",
+    "location": "Suburb B",
+    "price": 250000,
+    "yearBuilt": 1998,
+    "numOfBathrooms": 2,
+    "distanceFromCityCenter": 20,
+    "floors": 1,
+    "sizeOfGarden": 800,
+    "hasGarage": false
+  },
+  {
+    "type": "Cottage",
+    "location": "Village C",
+    "price": 180000,
+    "yearBuilt": 1975,
+    "numOfBathrooms": 1,
+    "sizeOfGarden": 700,
+    "numOfParkingSpaces": 1,
+    "locationType": "Rural"
+  },
+  {
+    "type": "Apartment",
+    "location": "City Outskirts",
+    "price": 350000,
+    "yearBuilt": 2020,
+    "numOfBathrooms": 3,
+    "floorLevel": 2,
+    "numOfParkingSpaces": 2,
+    "distanceFromCityCenter": 10,
+    "numOfTerraces": 2
+  },
+  {
+    "type": "House",
+    "location": "Suburb C",
+    "price": 400000,
+    "yearBuilt": 2010,
+    "numOfBathrooms": 3,
+    "distanceFromCityCenter": 25,
+    "floors": 3,
+    "sizeOfGarden": 600,
+    "hasGarage": true
+  },
+  {
+    "type": "Cottage",
+    "location": "Mountain Area D",
+    "price": 220000,
+    "yearBuilt": 2005,
+    "numOfBathrooms": 2,
+    "sizeOfGarden": 1200,
+    "numOfParkingSpaces": 3,
+    "locationType": "Scenic"
+  },
+  {
+    "type": "Apartment",
+    "location": "Downtown",
+    "price": 600000,
+    "yearBuilt": 2018,
+    "numOfBathrooms": 2,
+    "floorLevel": 10,
+    "numOfParkingSpaces": 1,
+    "distanceFromCityCenter": 1,
+    "numOfTerraces": 1
+  },
+  {
+    "type": "House",
+    "location": "Suburb D",
+    "price": 280000,
+    "yearBuilt": 2003,
+    "numOfBathrooms": 2,
+    "distanceFromCityCenter": 18,
+    "floors": 2,
+    "sizeOfGarden": 700,
+    "hasGarage": true
+  },
+  {
+    "type": "Cottage",
+    "location": "Beachfront E",
+    "price": 350000,
+    "yearBuilt": 2012,
+    "numOfBathrooms": 3,
+    "sizeOfGarden": 900,
+    "numOfParkingSpaces": 2,
+    "locationType": "Coastal"
+  },
+  {
+    "type": "Apartment",
+    "location": "Riverside",
+    "price": 450000,
+    "yearBuilt": 2016,
+    "numOfBathrooms": 2,
+    "floorLevel": 3,
+    "numOfParkingSpaces": 1,
+    "distanceFromCityCenter": 5,
+    "numOfTerraces": 1
+  },
+  {
+    "type": "House",
+    "location": "Suburb E",
+    "price": 320000,
+    "yearBuilt": 2008,
+    "numOfBathrooms": 3,
+    "distanceFromCityCenter": 22,
+    "floors": 2,
+    "sizeOfGarden": 800,
+    "hasGarage": false
+  },
+  {
+    "type": "Cottage",
+    "location": "Lakefront F",
+    "price": 280000,
+    "yearBuilt": 1995,
+    "numOfBathrooms": 2,
+    "sizeOfGarden": 600,
+    "numOfParkingSpaces": 2,
+    "locationType": "Lakeside"
+  },
+  {
+    "type": "Apartment",
+    "location": "High-Rise",
+    "price": 700000,
+    "yearBuilt": 2022,
+    "numOfBathrooms": 3,
+    "floorLevel": 20,
+    "numOfParkingSpaces": 2,
+    "distanceFromCityCenter": 2,
+    "numOfTerraces": 2
+  },
+  {
+    "type": "House",
+    "location": "Suburb F",
+    "price": 350000,
+    "yearBuilt": 2012,
+    "numOfBathrooms": 3,
+    "distanceFromCityCenter": 20,
+    "floors": 2,
+    "sizeOfGarden": 1000,
+    "hasGarage": true
+  },
+  {
+    "type": "Cottage",
+    "location": "Forest Area G",
+    "price": 200000,
+    "yearBuilt": 2000,
+    "numOfBathrooms": 1,
+    "sizeOfGarden": 1500,
+    "numOfParkingSpaces": 3,
+    "locationType": "Woodland"
+  },
+  {
+    "type": "Apartment",
+    "location": "Gated Community",
+    "price": 800000,
+    "yearBuilt": 2019,
+    "numOfBathrooms": 4,
+    "floorLevel": 5,
+    "numOfParkingSpaces": 2,
+    "distanceFromCityCenter": 8,
+    "numOfTerraces": 2
+  }]

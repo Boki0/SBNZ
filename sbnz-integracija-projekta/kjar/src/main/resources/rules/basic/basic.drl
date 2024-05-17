@@ -1,0 +1,126 @@
+package basic;
+
+
+import java.util.List;
+import com.ftn.sbnz.model.models.House;
+import com.ftn.sbnz.model.models.Cottage
+import com.ftn.sbnz.model.models.Apartment
+import com.ftn.sbnz.model.models.RealEstate
+import com.ftn.sbnz.model.enums.CottageLocationType
+
+
+global java.util.List recommendations;
+
+rule "HosueWithMoreThanTwoRooms"
+when
+    $house: House(numOfBathrooms > 2)
+then
+    recommendations.add($house);
+end
+
+rule "HouseWithMoreThanTwoBathrooms"
+    when
+        $house : House(numOfBathrooms > 2)
+    then
+        recommendations.add($house);
+end
+
+rule "CottageNearSea"
+    when
+        $cottage : Cottage(locationType == CottageLocationType.NEAR_SEA)
+    then
+        recommendations.add($cottage);
+end
+
+rule "CottageNearRiver"
+    when
+        $cottage : Cottage(locationType == CottageLocationType.NEAR_RIVER)
+    then
+        recommendations.add($cottage);
+end
+
+rule "CottageNearMountain"
+    when
+        $cottage : Cottage(locationType == CottageLocationType.NEAR_MOUNTAIN)
+    then
+        recommendations.add($cottage);
+end
+
+rule "ApartmentMultipleTerraces"
+    when
+        $apartment : Apartment(numOfTerraces > 1)
+    then
+        recommendations.add($apartment);
+end
+
+rule "ApartmentMultipleParkingSpaces"
+    when
+        $apartment : Apartment(numOfParkingSpaces > 1)
+    then
+        recommendations.add($apartment);
+end
+
+rule "ApartmentAboveFirstFloor"
+    when
+        $apartment : Apartment(floorLevel > 1)
+    then
+        recommendations.add($apartment);
+end
+
+
+rule "HousesWithMoreThanOneFloor"
+when
+    $house : House(floors > 1)
+then
+      recommendations.add($house);
+end
+
+
+rule "HousesWithOneFloor"
+when
+    $house : House(floors == 1)
+then
+    recommendations.add($house);
+end
+
+rule "LowPricedRealEstate"
+when
+    $realEstate : RealEstate(price < 50000)
+then
+    recommendations.add($realEstate);
+end
+
+rule "HighPricedRealEstate"
+when
+    $realEstate : RealEstate(price > 50000)
+then
+    recommendations.add($realEstate);
+end
+
+rule "RecentConstruction"
+when
+    $realEstate : RealEstate(yearBuilt > 2015)
+then
+    recommendations.add($realEstate);
+end
+
+rule "LargeApartment"
+when
+    $apartment : Apartment(area > 60)
+then
+    recommendations.add($apartment);
+end
+
+rule "NearCityCenter"
+when
+    $realEstate : (House(distanceFromCityCenter < 3) or Apartment(distanceFromCityCenter < 3))
+then
+    recommendations.add($realEstate);
+end
+
+rule "FarFromCityCenter"
+when
+    $realEstate : (House(distanceFromCityCenter > 10) or Apartment(distanceFromCityCenter > 10))
+then
+    recommendations.add($realEstate);
+end

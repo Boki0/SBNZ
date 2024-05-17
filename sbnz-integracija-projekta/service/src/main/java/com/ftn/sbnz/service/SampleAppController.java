@@ -1,11 +1,10 @@
 package com.ftn.sbnz.service;
 
+import DTO.LoginFormDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -19,14 +18,13 @@ public class SampleAppController {
 		this.sampleService = sampleService;
 	}
 
-	@RequestMapping(value = "/item", method = RequestMethod.GET, produces = "application/json")
-	public Item getQuestions()
-	{
 
-
-
-		return "naskdfks";
-
+	@CrossOrigin
+	@PostMapping("/login")
+	public String login(@RequestBody LoginFormDTO form) {
+		// Ovdje implementirajte logiku za provjeru korisničkih podataka i generiranje odgovora
+		String message = "Welcome, " + form.getUsername() + "!";
+		return message;
 	}
 	
 	

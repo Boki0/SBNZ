@@ -7,12 +7,16 @@ public class House extends RealEstate{
 
     private boolean hasGarage;
 
+
     public House(String location, int price, int yearBuilt, int numOfBathrooms, int distanceFromCityCenter, int floors, int sizeOfGarden, boolean hasGarage) {
         super(location, price, yearBuilt, numOfBathrooms);
         this.distanceFromCityCenter = distanceFromCityCenter;
         this.floors = floors;
         this.sizeOfGarden = sizeOfGarden;
         this.hasGarage = hasGarage;
+    }
+
+    public House() {
     }
 
     public int getDistanceFromCityCenter() {

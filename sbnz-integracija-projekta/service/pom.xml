@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<drools.version>7.49.0.Final</drools.version>
+		<maven.home.skip>true</maven.home.skip>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -88,7 +89,9 @@
 			<artifactId>drools-templates</artifactId>
 			<version>${drools.version}</version>
 		</dependency>
+
 	</dependencies>
+
 
 	<build>
 		<plugins>
