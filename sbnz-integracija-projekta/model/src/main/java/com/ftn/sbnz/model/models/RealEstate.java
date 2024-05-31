@@ -20,8 +20,9 @@ public class RealEstate {
         return location;
     }
 
-    public void setLocation(String location) {
+    public RealEstate setLocation(String location) {
         this.location = location;
+        return null;
     }
 
     public int getPrice() {
