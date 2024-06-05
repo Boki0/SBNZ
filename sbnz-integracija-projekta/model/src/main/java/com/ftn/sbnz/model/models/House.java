@@ -54,7 +54,11 @@ public class House extends RealEstate{
     @Override
     public String toString() {
         return "House{" +
-                "distanceFromCityCenter=" + distanceFromCityCenter +
+                "location='" + getLocation() + '\'' +
+                ", price=" + getPrice() +
+                ", yearBuilt=" + getYearBuilt() +
+                ", numOfBathrooms=" + getNumOfBathrooms() +
+                ", distanceFromCityCenter=" + distanceFromCityCenter +
                 ", floors=" + floors +
                 ", sizeOfGarden=" + sizeOfGarden +
                 ", hasGarage=" + hasGarage +

@@ -3,6 +3,8 @@ package com.ftn.sbnz.service;
 import DTO.LoginFormDTO;
 import com.ftn.sbnz.model.models.House;
 import com.ftn.sbnz.model.models.RealEstate;
+import com.ftn.sbnz.model.models.SearchParametersHouse;
+import com.ftn.sbnz.repository.RealEstateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,43 @@ public class SampleAppController {
 
 	private final SampleAppService sampleService;
 
+
 	@Autowired
 	public SampleAppController(SampleAppService sampleService) {
 		this.sampleService = sampleService;
 	}
 
+	@CrossOrigin
+	@PostMapping("/searchhouses")
+	public List<House> searchHouses(
+			@RequestParam double maxPrice,
+			@RequestParam int minYearBuilt,
+			@RequestParam int minNumOfBathrooms,
+			@RequestParam int minFloors,
+			@RequestParam(defaultValue = "false") boolean hasGarden
+	) {
+		// Ispis parametara u konzolu
+//		System.out.println("Received search criteria for houses:");
+//		System.out.println("Max Price: " + maxPrice);
+//		System.out.println("Min Year Built: " + minYearBuilt);
+//		System.out.println("Min Number of Bathrooms: " + minNumOfBathrooms);
+//		System.out.println("Min Floors: " + minFloors);
+//		System.out.println("Has Garden: " + hasGarden);
+
+		SearchParametersHouse searchPH = new SearchParametersHouse(maxPrice,minYearBuilt,minNumOfBathrooms,minFloors,hasGarden);
+
+//		// Simulacija pretrage i vraćanje rezultata
+//		List<RealEstate> properties = new ArrayList<>();
+//		RealEstate k1 = new House("Kuća 1", 200000, 1995, 2, 1, 2, 100, true);
+//		RealEstate k2 = new House("Kuća 2", 300000, 2000, 3, 2, 3, 200, true);
+//		properties.add(k1);
+//		properties.add(k2);
+
+		// Poziv servisa
+		List <House> listRec = sampleService.testHouse(searchPH);
+
+		return listRec;
+	}
 	@CrossOrigin
 	@PostMapping("/search")
 	public List<RealEstate> searchProperties(
@@ -56,6 +90,8 @@ public class SampleAppController {
 		properties.add(e1);
 		properties.add(e2);
 		properties.add(k);
+
+
 
 
 		return properties;

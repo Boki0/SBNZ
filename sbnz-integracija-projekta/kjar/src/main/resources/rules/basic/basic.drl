@@ -7,120 +7,142 @@ import com.ftn.sbnz.model.models.Cottage
 import com.ftn.sbnz.model.models.Apartment
 import com.ftn.sbnz.model.models.RealEstate
 import com.ftn.sbnz.model.enums.CottageLocationType
+ import com.ftn.sbnz.model.models.SearchParametersHouse
+
+import java.util.List;
+
+global java.util.List  recommendations;
 
 
-global java.util.List recommendations;
-
-rule "HosueWithMoreThanTwoRooms"
+rule "HouseMatchesSearchParameters"
 when
-    $house: House(numOfBathrooms > 2)
+    $searchParams : SearchParametersHouse() // Uzmi objekat pretrage iz sesije
+    $house : House(
+        // Proveri da li kuća zadovoljava uslove pretrage
+        price <= $searchParams.getMaxPrice(),
+        yearBuilt >= $searchParams.getMinYearBuilt(),
+        numOfBathrooms >= $searchParams.getMinNumOfBathrooms(),
+        floors >= $searchParams.getMinFloors(),
+        hasGarage == $searchParams.isHasGarden()
+    )
 then
+    System.out.println("zadovoljava ova kuca ");
+    // Ako kuća zadovoljava uslove, dodaj je u listu preporuka
     recommendations.add($house);
 end
 
-rule "HouseWithMoreThanTwoBathrooms"
-    when
-        $house : House(numOfBathrooms > 2)
-    then
-        recommendations.add($house);
-end
 
-rule "CottageNearSea"
-    when
-        $cottage : Cottage(locationType == CottageLocationType.NEAR_SEA)
-    then
-        recommendations.add($cottage);
-end
+//rule "PrintAttributesIfMaxPriceGreaterThanOne"
+//when
+//    $searchParams: SearchParametersHouse(maxPrice > 1)
+//then
+//    System.out.println("Max Pricerools: " + $searchParams.getMaxPrice());
+//    System.out.println("Min Year Built: " + $searchParams.getMinYearBuilt());
+//    System.out.println("Min Number of Bathroomsroosl: " + $searchParams.getMinNumOfBathrooms());
+//    System.out.println("Min Floorsrools: " + $searchParams.getMinFloors());
+//    System.out.println("Has Gardenrools : " + $searchParams.isHasGarden());
+//end
+//
+//
+//rule "HosueWithMoreThanTwoRooms"
+//when
+//    $house: House(numOfBathrooms > 2)
+//then
+//    recommendations.add($house);
+//end
+//
+//rule "HouseWithMoreThanTwoBathrooms"
+//    when
+//        $house : House(numOfBathrooms > 2)
+//    then
+//        recommendations.add($house);
+//end
+//
+//rule "CottageNearSea"
+//    when
+//        $cottage : Cottage(locationType == CottageLocationType.NEAR_SEA)
+//    then
+//        recommendations.add($cottage);
+//end
+//
+//rule "CottageNearRiver"
+//    when
+//        $cottage : Cottage(locationType == CottageLocationType.NEAR_RIVER)
+//    then
+//        recommendations.add($cottage);
+//end
+//
+//rule "CottageNearMountain"
+//    when
+//        $cottage : Cottage(locationType == CottageLocationType.NEAR_MOUNTAIN)
+//    then
+//        recommendations.add($cottage);
+//end
+//
+//rule "ApartmentMultipleTerraces"
+//    when
+//        $apartment : Apartment(numOfTerraces > 1)
+//    then
+//        recommendations.add($apartment);
+//end
+//
+//rule "ApartmentMultipleParkingSpaces"
+//    when
+//        $apartment : Apartment(numOfParkingSpaces > 1)
+//    then
+//        recommendations.add($apartment);
+//end
+//
+//rule "ApartmentAboveFirstFloor"
+//    when
+//        $apartment : Apartment(floorLevel > 1)
+//    then
+//        recommendations.add($apartment);
+//end
+//
+//
+//rule "HousesWithMoreThanOneFloor"
+//when
+//    $house : House(floors > 1)
+//then
+//      recommendations.add($house);
+//end
+//
+//
+//rule "HousesWithOneFloor"
+//when
+//    $house : House(floors == 1)
+//then
+//    System.out.println("This house has one floor.");
+//    recommendations.add($house);
+//end
+//
+//rule "LowPricedRealEstate"
+//when
+//    $realEstate : RealEstate(price < 50000)
+//then
+//    recommendations.add($realEstate);
+//end
+//
+//rule "HighPricedRealEstate"
+//when
+//    $realEstate : RealEstate(price > 50000)
+//then
+//    recommendations.add($realEstate);
+//end
+//
+//rule "RecentConstruction"
+//when
+//    $realEstate : RealEstate(yearBuilt > 2015)
+//then
+//    recommendations.add($realEstate);
+//end
+//
+//rule "LargeApartment"
+//when
+//    $apartment : Apartment(area > 60)
+//then
+//    recommendations.add($apartment);
+//end
+//
 
-rule "CottageNearRiver"
-    when
-        $cottage : Cottage(locationType == CottageLocationType.NEAR_RIVER)
-    then
-        recommendations.add($cottage);
-end
-
-rule "CottageNearMountain"
-    when
-        $cottage : Cottage(locationType == CottageLocationType.NEAR_MOUNTAIN)
-    then
-        recommendations.add($cottage);
-end
-
-rule "ApartmentMultipleTerraces"
-    when
-        $apartment : Apartment(numOfTerraces > 1)
-    then
-        recommendations.add($apartment);
-end
-
-rule "ApartmentMultipleParkingSpaces"
-    when
-        $apartment : Apartment(numOfParkingSpaces > 1)
-    then
-        recommendations.add($apartment);
-end
-
-rule "ApartmentAboveFirstFloor"
-    when
-        $apartment : Apartment(floorLevel > 1)
-    then
-        recommendations.add($apartment);
-end
-
-
-rule "HousesWithMoreThanOneFloor"
-when
-    $house : House(floors > 1)
-then
-      recommendations.add($house);
-end
-
-
-rule "HousesWithOneFloor"
-when
-    $house : House(floors == 1)
-then
-    recommendations.add($house);
-end
-
-rule "LowPricedRealEstate"
-when
-    $realEstate : RealEstate(price < 50000)
-then
-    recommendations.add($realEstate);
-end
-
-rule "HighPricedRealEstate"
-when
-    $realEstate : RealEstate(price > 50000)
-then
-    recommendations.add($realEstate);
-end
-
-rule "RecentConstruction"
-when
-    $realEstate : RealEstate(yearBuilt > 2015)
-then
-    recommendations.add($realEstate);
-end
-
-rule "LargeApartment"
-when
-    $apartment : Apartment(area > 60)
-then
-    recommendations.add($apartment);
-end
-
-rule "NearCityCenter"
-when
-    $realEstate : (House(distanceFromCityCenter < 3) or Apartment(distanceFromCityCenter < 3))
-then
-    recommendations.add($realEstate);
-end
-
-rule "FarFromCityCenter"
-when
-    $realEstate : (House(distanceFromCityCenter > 10) or Apartment(distanceFromCityCenter > 10))
-then
-    recommendations.add($realEstate);
-end
