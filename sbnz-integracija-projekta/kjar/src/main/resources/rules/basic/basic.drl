@@ -7,8 +7,8 @@ import com.ftn.sbnz.model.models.Cottage
 import com.ftn.sbnz.model.models.Apartment
 import com.ftn.sbnz.model.models.RealEstate
 import com.ftn.sbnz.model.enums.CottageLocationType
- import com.ftn.sbnz.model.models.SearchParametersHouse
-
+import com.ftn.sbnz.model.models.SearchParametersHouse
+import com.ftn.sbnz.model.models.SearchParametersCottage
 import java.util.List;
 
 global java.util.List  recommendations;
@@ -29,6 +29,24 @@ then
     System.out.println("zadovoljava ova kuca ");
     // Ako kuća zadovoljava uslove, dodaj je u listu preporuka
     recommendations.add($house);
+end
+
+rule "CottageMatchesSearchParameters"
+when
+    $searchParams : SearchParametersCottage() // Uzmi objekat pretrage iz sesije
+    $cottage : Cottage(
+        // Proveri da li kuća zadovoljava uslove pretrage
+        price <= $searchParams.getMaxPrice(),
+        yearBuilt >= $searchParams.getMinYearBuilt(),
+        numOfBathrooms >= $searchParams.getMinNumOfBathrooms(),
+        sizeOfGarden >= $searchParams.getMinSizeOfGarden(),
+        numOfParkingSpaces >= $searchParams.getMinNumOfParkingSpaces(),
+        locationType == $searchParams.getLocationType()
+    )
+then
+    System.out.println("Vikendica zadovoljava uslove pretrage: " + $cottage);
+    // Ako kuća zadovoljava uslove, dodaj je u listu preporuka
+    recommendations.add($cottage);
 end
 
 
@@ -131,18 +149,5 @@ end
 //    recommendations.add($realEstate);
 //end
 //
-//rule "RecentConstruction"
-//when
-//    $realEstate : RealEstate(yearBuilt > 2015)
-//then
-//    recommendations.add($realEstate);
-//end
-//
-//rule "LargeApartment"
-//when
-//    $apartment : Apartment(area > 60)
-//then
-//    recommendations.add($apartment);
-//end
-//
+
 

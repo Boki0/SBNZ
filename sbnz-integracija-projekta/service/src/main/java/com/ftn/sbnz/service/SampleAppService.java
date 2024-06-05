@@ -1,6 +1,8 @@
 package com.ftn.sbnz.service;
 
+import com.ftn.sbnz.model.models.Cottage;
 import com.ftn.sbnz.model.models.House;
+import com.ftn.sbnz.model.models.SearchParametersCottage;
 import com.ftn.sbnz.model.models.SearchParametersHouse;
 import com.ftn.sbnz.repository.RealEstateRepository;
 import org.kie.api.KieServices;
@@ -29,7 +31,7 @@ public class SampleAppService {
 		this.kieContainer = kieContainer;
 	}
 
-	public List<House> testHouse(SearchParametersHouse searchParametersHouse) {
+	public List<House> getHouses(SearchParametersHouse searchParametersHouse) {
 
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kContainer = ks.getKieClasspathContainer();
@@ -72,15 +74,33 @@ public class SampleAppService {
 
 	}
 
+	public List<Cottage> getCottages(SearchParametersCottage searchPC) {
+
+		KieServices ks = KieServices.Factory.get();
+		KieContainer kContainer = ks.getKieClasspathContainer();
+		KieSession ksession = kContainer.newKieSession("basicKsession");
 
 
-//	public Item getClassifiedItem(Item i) {
-//		KieSession kieSession = kieContainer.newKieSession();
-//		kieSession.insert(i);
-//		kieSession.fireAllRules();
-//		kieSession.dispose();
-//		return i;
-//	}
+
+		List<Cottage> recommendations = new ArrayList<>();
+		ksession.setGlobal("recommendations", recommendations);
+		ksession.insert(searchPC);
+
+		List<Cottage> allCottages = repository.getAllCottages();
+
+
+		for (Cottage cottage : allCottages) {
+			ksession.insert(cottage);
+		}
+		ksession.fireAllRules();
+		System.out.println("Recommendation cottages: " + recommendations);
+
+		ksession.dispose();
+		return recommendations;
+	}
+
+
+
 
 
 }

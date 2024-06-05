@@ -1,10 +1,7 @@
 package com.ftn.sbnz.service;
 
 import DTO.LoginFormDTO;
-import com.ftn.sbnz.model.models.House;
-import com.ftn.sbnz.model.models.RealEstate;
-import com.ftn.sbnz.model.models.SearchParametersHouse;
-import com.ftn.sbnz.repository.RealEstateRepository;
+import com.ftn.sbnz.model.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +23,30 @@ public class SampleAppController {
 	public SampleAppController(SampleAppService sampleService) {
 		this.sampleService = sampleService;
 	}
+	@CrossOrigin
+	@PostMapping("/searchcottages")
+	public List<Cottage> searchHouses(
+			@RequestParam double maxPrice,
+			@RequestParam int minYearBuilt,
+			@RequestParam int minNumOfBathrooms,
+			@RequestParam int minSizeOfGarden,
+			@RequestParam(defaultValue = "0") int minNumOfParkingSpaces,
+			@RequestParam  String  locationType
 
+	) {
+//		System.out.println("Received search criteria for cottages:");
+//		System.out.println("Max Price: " + maxPrice);
+//		System.out.println("Min Year Built: " + minYearBuilt);
+//		System.out.println("Min Number of Bathrooms: " + minNumOfBathrooms);
+//		System.out.println("Min Size Of Garden: " + minSizeOfGarden);
+//		System.out.println("Min Number Of Parking Spaces: " + minNumOfParkingSpaces);
+//		System.out.println("Location Type: " + locationType);
+		SearchParametersCottage cearchPC = new SearchParametersCottage(maxPrice,minYearBuilt,minNumOfBathrooms,minSizeOfGarden,minNumOfParkingSpaces,locationType);
+
+		List <Cottage> listRec = sampleService.getCottages(cearchPC);
+
+		return listRec;
+	}
 	@CrossOrigin
 	@PostMapping("/searchhouses")
 	public List<House> searchHouses(
@@ -54,7 +74,7 @@ public class SampleAppController {
 //		properties.add(k2);
 
 		// Poziv servisa
-		List <House> listRec = sampleService.testHouse(searchPH);
+		List <House> listRec = sampleService.getHouses(searchPH);
 
 		return listRec;
 	}

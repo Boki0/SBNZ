@@ -58,6 +58,7 @@ public class RealEstateRepository implements IRealEstateRepository{
         realEstates.add(new House("Suburb Y", 30000, 2008, 2, 22, 1, 2400, true));
         realEstates.add(new House("Suburb Z", 340000, 2014, 3, 28, 2, 2500, false));
 
+
         // Cottage
         realEstates.add(new Cottage("Rural Area B", 150000, 1985, 2, 1000, 2, CottageLocationType.NEAR_MOUNTAIN));
 
@@ -70,6 +71,42 @@ public class RealEstateRepository implements IRealEstateRepository{
         realEstates.add(new Cottage("Lakefront F", 280000, 1995, 2, 600, 2, CottageLocationType.NEAR_SEA));
 
         realEstates.add(new Cottage("Forest Area G", 200000, 2000, 1, 1500, 3, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Mountain View H", 240000, 1998, 2, 800, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("River Valley I", 190000, 2003, 2, 1100, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Sea Breeze J", 320000, 2010, 3, 1000, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Village Retreat K", 170000, 1990, 2, 850, 1, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Mountain Hideaway L", 210000, 1980, 1, 950, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Beach House M", 380000, 2007, 3, 1200, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Lake House N", 260000, 1993, 2, 700, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Forest Retreat O", 230000, 2002, 2, 1300, 3, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Mountain Retreat P", 250000, 2004, 2, 900, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Riverfront Q", 200000, 1997, 2, 1000, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Seaside Cottage R", 300000, 2009, 3, 800, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Village House S", 190000, 1988, 2, 750, 1, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Mountain Cabin T", 270000, 1996, 1, 850, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Beachfront Villa U", 400000, 2015, 4, 1100, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Lakeside Retreat V", 290000, 2003, 3, 900, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Forest Lodge W", 260000, 1999, 2, 1200, 3, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Mountain Chalet X", 280000, 2000, 2, 950, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Riverfront Cabin Y", 210000, 1994, 1, 800, 1, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Seaside Bungalow Z", 320000, 2011, 2, 1000, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Hillside Cottage AA", 220000, 1995, 2, 900, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Riverbank House BB", 190000, 1990, 3, 1200, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Seaview Cottage CC", 350000, 2013, 2, 800, 1, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Village Retreat DD", 180000, 1985, 2, 700, 1, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Mountain View EE", 240000, 1998, 2, 850, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("River Valley FF", 200000, 2003, 2, 1100, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Sea Breeze GG", 320000, 2010, 3, 1000, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Village Retreat HH", 170000, 1990, 2, 850, 1, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Mountain Hideaway II", 210000, 1980, 1, 950, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Beach House JJ", 380000, 2007, 3, 1200, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Lake House KK", 260000, 1993, 2, 700, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Forest Retreat LL", 230000, 2002, 2, 1300, 3, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Mountain Retreat MM", 250000, 2004, 2, 900, 2, CottageLocationType.NEAR_MOUNTAIN));
+        realEstates.add(new Cottage("Riverfront NN", 200000, 1997, 2, 1000, 2, CottageLocationType.NEAR_RIVER));
+        realEstates.add(new Cottage("Seaside Cottage OO", 300000, 2009, 3, 800, 2, CottageLocationType.NEAR_SEA));
+        realEstates.add(new Cottage("Village House PP", 190000, 1988, 2, 750, 1, CottageLocationType.NEAR_RIVER));
+
 
         // Apartment
         realEstates.add(new Apartment("City Center", 500000, 2015, 2, 5, 1, 0, 1, 0));
@@ -99,6 +136,18 @@ public class RealEstateRepository implements IRealEstateRepository{
         }
 
         return houses;
+    }
+    public List<Cottage> getAllCottages() {
+        List<RealEstate> allRealEstates = allRealEstates();
+        List<Cottage> cottages = new ArrayList<>();
+
+        for (RealEstate realEstate : allRealEstates) {
+            if (realEstate instanceof Cottage) {
+                cottages.add((Cottage) realEstate);
+            }
+        }
+
+        return cottages;
     }
 
 
