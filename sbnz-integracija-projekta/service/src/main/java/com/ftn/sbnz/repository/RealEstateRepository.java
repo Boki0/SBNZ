@@ -109,18 +109,46 @@ public class RealEstateRepository implements IRealEstateRepository{
 
 
         // Apartment
-        realEstates.add(new Apartment("City Center", 500000, 2015, 2, 5, 1, 0, 1, 0));
+        realEstates.add(new Apartment("City Center", 500000, 2015, 2, 5, 1, 0, 1, 43));
 
         realEstates.add(new Apartment("City Outskirts", 350000, 2020, 3, 2, 2, 10, 2, 100));
 
-        realEstates.add(new Apartment("Downtown", 600000, 2018, 2, 10, 1, 1, 1, 0));
+        realEstates.add(new Apartment("Downtown", 600000, 2018, 2, 10, 1, 1, 1, 75));
 
-        realEstates.add(new Apartment("Riverside", 450000, 2016, 2, 3, 1, 5, 1, 0));
+        realEstates.add(new Apartment("Riverside", 450000, 2016, 2, 3, 1, 5, 1, 200));
 
-        realEstates.add(new Apartment("High-Rise", 700000, 2022, 3, 20, 2, 2, 2, 0));
+        realEstates.add(new Apartment("High-Rise", 700000, 2022, 3, 20, 2, 2, 2, 32));
 
-        realEstates.add(new Apartment("Gated Community", 800000, 2019, 4, 5, 2, 8, 2, 0));
-
+        realEstates.add(new Apartment("Gated Community", 800000, 2019, 4, 5, 2, 8, 2, 90));
+        realEstates.add(new Apartment("Suburbia", 400000, 2017, 2, 5, 1, 15, 1, 60));
+        realEstates.add(new Apartment("Luxury Tower", 1500000, 2016, 4, 25, 2, 2, 3, 150));
+        realEstates.add(new Apartment("Family Complex", 550000, 2014, 3, 8, 2, 12, 2, 110));
+        realEstates.add(new Apartment("Student Dormitory", 200000, 2010, 1, 5, 1, 5, 1, 25));
+        realEstates.add(new Apartment("Penthouse View", 1200000, 2019, 3, 30, 2, 3, 2, 100));
+        realEstates.add(new Apartment("Modern Loft", 900000, 2015, 2, 15, 1, 3, 1, 80));
+        realEstates.add(new Apartment("Green Oasis", 650000, 2013, 3, 10, 2, 10, 2, 95));
+        realEstates.add(new Apartment("Art Deco Apartment", 750000, 2011, 2, 12, 1, 5, 1, 70));
+        realEstates.add(new Apartment("Lakefront Luxury", 1000000, 2018, 4, 18, 2, 7, 2, 120));
+        realEstates.add(new Apartment("Skyline Residence", 850000, 2016, 3, 20, 2, 5, 2, 90));
+        realEstates.add(new Apartment("Cozy Studio", 300000, 2021, 1, 5, 0, 3, 0, 40));
+        realEstates.add(new Apartment("Mountain View", 950000, 2017, 3, 12, 2, 15, 2, 100));
+        realEstates.add(new Apartment("Rooftop Terrace", 1100000, 2014, 3, 25, 2, 4, 2, 130));
+        realEstates.add(new Apartment("Industrial Loft", 800000, 2012, 2, 10, 1, 8, 1, 85));
+        realEstates.add(new Apartment("Waterfront Haven", 1300000, 2019, 4, 22, 2, 6, 2, 140));
+        realEstates.add(new Apartment("Garden Retreat", 600000, 2015, 3, 8, 2, 5, 1, 75));
+        realEstates.add(new Apartment("City View Condo", 700000, 2016, 2, 15, 1, 2, 1, 65));
+        realEstates.add(new Apartment("Quaint Residence", 400000, 2013, 2, 5, 1, 4, 1, 55));
+        realEstates.add(new Apartment("Cosmopolitan Living", 900000, 2018, 3, 18, 2, 3, 2, 85));
+        realEstates.add(new Apartment("Sunset Tower", 750000, 2017, 2, 12, 1, 6, 1, 70));
+        realEstates.add(new Apartment("Urban Oasis", 850000, 2015, 3, 20, 2, 5, 2, 95));
+        realEstates.add(new Apartment("Riverside Retreat", 950000, 2016, 3, 18, 2, 7, 2, 100));
+        realEstates.add(new Apartment("Central Loft", 700000, 2019, 2, 15, 1, 2, 1, 65));
+        realEstates.add(new Apartment("Parkside Living", 550000, 2014, 2, 10, 1, 5, 1, 60));
+        realEstates.add(new Apartment("Luxury Penthouse", 1500000, 2016, 4, 30, 2, 3, 3, 150));
+        realEstates.add(new Apartment("Cityscape View", 950000, 2017, 3, 25, 2, 5, 2, 100));
+        realEstates.add(new Apartment("Harbor Heights", 1100000, 2015, 3, 20, 2, 4, 2, 120));
+        realEstates.add(new Apartment("Sky High Luxury", 1300000, 2019, 4, 35, 2, 6, 2, 140));
+        realEstates.add(new Apartment("Modern Chic", 800000, 2018, 2, 15, 1, 3, 1, 80));
        return  realEstates;
 
     }
@@ -151,4 +179,16 @@ public class RealEstateRepository implements IRealEstateRepository{
     }
 
 
+    public List<Apartment> getAllApartments() {
+        List<RealEstate> allRealEstates = allRealEstates();
+        List<Apartment> apartments = new ArrayList<>();
+
+        for (RealEstate realEstate : allRealEstates) {
+            if (realEstate instanceof Apartment) {
+                apartments.add((Apartment) realEstate);
+            }
+        }
+
+        return apartments;
+    }
 }

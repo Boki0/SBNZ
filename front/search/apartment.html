@@ -3,12 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apartment Information</title>
+<title>Apartment Search</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="container">
+    <h2>Apartment Search</h2>
+    <form id="searchForm">
+        <div class="form-group">
+            <label for="maxPrice">Max Price:</label>
+            <input type="number" id="maxPrice" name="maxPrice" value="999999">
+        </div>
+        <div class="form-group">
+            <label for="minYearBuilt">Min Year Built:</label>
+            <input type="number" id="minYearBuilt" name="minYearBuilt" value="1950">
+        </div>
+        <div class="form-group">
+            <label for="minNumOfBathrooms">Min Number of Bathrooms:</label>
+            <input type="number" id="minNumOfBathrooms" name="minNumOfBathrooms" value="1">
+        </div>
+        <div class="form-group">
+            <label for="minFloorLevel">Min Floor Level:</label>
+            <input type="number" id="minFloorLevel" name="minFloorLevel" value="0">
+        </div>
+        <div class="form-group">
+            <label for="minNumOfParkingSpaces">Min Number Of Parking Spaces:</label>
+            <input type="number" id="minNumOfParkingSpaces" name="minNumOfParkingSpaces" value="0">
+        </div>
+        <div class="form-group">
+            <label for="minDistanceFromCityCenter">Min Distance From City Center (m):</label>
+            <input type="number" id="minDistanceFromCityCenter" name="minDistanceFromCityCenter" value="0">
+        </div>
+        <div class="form-group">
+            <label for="minArea">Min Area (sqm):</label>
+            <input type="number" id="minArea" name="minArea" value="0">
+        </div>
+        <button type="submit">Search</button>
+    </form>
+    <div id="results">
+        <!-- Ovdje će se prikazati rezultati pretrage -->
+    </div>
+</div>
 
-<h1>Apartment Information</h1>
-<p>Ovo je informacija o apartment-u.</p>
+<script>
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(this);
+  const searchParams = new URLSearchParams(formData).toString();
+  const url = `http://localhost:8080/searchapartments?${searchParams}`;
+
+  fetch(url, {
+    method: 'POST'
+  })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    const resultsContainer = document.getElementById("results");
+    resultsContainer.innerHTML = ""; // Clear previous results
+
+    if (data && data.length > 0) {
+      data.forEach(property => {
+        const panel = document.createElement("div");
+        panel.classList.add("apartment-panel");
+
+        // Add apartment image
+        const image = document.createElement("img");
+        image.src = "apartment.jpg";
+        panel.appendChild(image);
+
+        // Add property attributes
+        for (const key in property) {
+          const attribute = document.createElement("div");
+          attribute.classList.add("attribute");
+          const attributeName = document.createElement("span");
+          attributeName.classList.add("attribute-name");
+          attributeName.innerHTML = "<b>" + key.toUpperCase() + ":</b>";
+          const attributeValue = document.createElement("span");
+          attributeValue.classList.add("attribute-value");
+          attributeValue.innerHTML = "<i>" + property[key] + "</i>";
+          attribute.appendChild(attributeName);
+          attribute.appendChild(attributeValue);
+          panel.appendChild(attribute);
+        }
+
+        resultsContainer.appendChild(panel);
+      });
+    } else {
+      // If no properties found, display message
+      resultsContainer.innerHTML = "No properties found.";
+    }
+  })
+  .catch(error => {
+    console.error('Error sending request:', error);
+  });
+});
+</script>
 
 </body>
 </html>

@@ -24,6 +24,23 @@ public class SampleAppController {
 		this.sampleService = sampleService;
 	}
 	@CrossOrigin
+	@PostMapping("/searchapartments")
+	public List<Apartment> searchApartments(
+			@RequestParam double maxPrice,
+			@RequestParam int minYearBuilt,
+			@RequestParam int minNumOfBathrooms,
+			@RequestParam int minFloorLevel,
+			@RequestParam(defaultValue = "0") int minNumOfParkingSpaces,
+			@RequestParam(defaultValue = "0") int minDistanceFromCityCenter,
+			@RequestParam(defaultValue = "0") int minArea
+	) {
+		SearchParametersApartment searchParams = new SearchParametersApartment(maxPrice, minYearBuilt, minNumOfBathrooms, minFloorLevel, minNumOfParkingSpaces, minDistanceFromCityCenter, minArea);
+
+		List<Apartment> matchingApartments = sampleService.searchApartments(searchParams);
+
+		return matchingApartments;
+	}
+	@CrossOrigin
 	@PostMapping("/searchcottages")
 	public List<Cottage> searchHouses(
 			@RequestParam double maxPrice,

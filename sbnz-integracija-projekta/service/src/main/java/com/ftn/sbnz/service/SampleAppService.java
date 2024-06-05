@@ -1,9 +1,6 @@
 package com.ftn.sbnz.service;
 
-import com.ftn.sbnz.model.models.Cottage;
-import com.ftn.sbnz.model.models.House;
-import com.ftn.sbnz.model.models.SearchParametersCottage;
-import com.ftn.sbnz.model.models.SearchParametersHouse;
+import com.ftn.sbnz.model.models.*;
 import com.ftn.sbnz.repository.RealEstateRepository;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -100,7 +97,29 @@ public class SampleAppService {
 	}
 
 
+    public List<Apartment> searchApartments(SearchParametersApartment searchParams) {
+		KieServices ks = KieServices.Factory.get();
+		KieContainer kContainer = ks.getKieClasspathContainer();
+		KieSession ksession = kContainer.newKieSession("basicKsession");
 
+
+
+		List<Apartment> recommendations = new ArrayList<>();
+		ksession.setGlobal("recommendations", recommendations);
+		ksession.insert(searchParams);
+
+		List<Apartment> allApartments = repository.getAllApartments();
+
+
+		for (Apartment apartment : allApartments) {
+			ksession.insert(apartment);
+		}
+		ksession.fireAllRules();
+		System.out.println("Recommendation apartments: " + recommendations);
+
+		ksession.dispose();
+		return recommendations;
+    }
 
 
 }

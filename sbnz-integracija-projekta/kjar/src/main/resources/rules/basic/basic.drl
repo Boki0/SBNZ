@@ -9,10 +9,29 @@ import com.ftn.sbnz.model.models.RealEstate
 import com.ftn.sbnz.model.enums.CottageLocationType
 import com.ftn.sbnz.model.models.SearchParametersHouse
 import com.ftn.sbnz.model.models.SearchParametersCottage
+import com.ftn.sbnz.model.models.SearchParametersApartment
 import java.util.List;
 
 global java.util.List  recommendations;
 
+rule "ApartmentMatchesSearchParameters"
+when
+    $searchParams : SearchParametersApartment() // Uzmi objekat pretrage iz sesije
+    $apartment : Apartment(
+        // Proveri da li apartman zadovoljava uslove pretrage
+        price <= $searchParams.getMaxPrice(),
+        yearBuilt >= $searchParams.getMinYearBuilt(),
+        numOfBathrooms >= $searchParams.getMinNumOfBathrooms(),
+        floorLevel >= $searchParams.getMinFloorLevel(),
+        numOfParkingSpaces >= $searchParams.getMinNumOfParkingSpaces(),
+        distanceFromCityCenter >= $searchParams.getMinDistanceFromCityCenter(),
+        area >= $searchParams.getMinArea()
+    )
+then
+    System.out.println("Ovaj apartman zadovoljava kriterijume pretrage.");
+    // Ako apartman zadovoljava uslove, dodaj ga u listu preporuka
+    recommendations.add($apartment);
+end
 
 rule "HouseMatchesSearchParameters"
 when
